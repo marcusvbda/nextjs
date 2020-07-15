@@ -1,29 +1,23 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { UserContext } from '../context/userContext'
 import Link from 'next/link'
-import ProtectedRoute from '../components/protectedRoute'
-import Router from 'next/router'
+import ProtectedRoute from '../utils/protectedRoute'
 
 const Counter = () => {
     const [counter, setCounter] = useState(0)
-    const { setUserName } = useContext(UserContext)
+    const { logout } = useContext(UserContext)
 
-    useEffect(() => {
-        console.log("first")
+    // useEffect(() => {
+    //     // console.log("first")
 
-        return () => {
-            console.log("desctruction")
-        }
-    }, [])
+    //     return () => {
+    //         // console.log("desctruction")
+    //     }
+    // }, [])
 
-    useEffect(() => {
-        console.log("counter alterado")
-    }, [counter])
-
-    const logout = () => {
-        setUserName(null)
-        Router.push("/user")
-    }
+    // useEffect(() => {
+    //     // console.log("counter alterado")
+    // }, [counter])
 
     return (
         <div>
@@ -31,12 +25,13 @@ const Counter = () => {
             <button onClick={() => setCounter(counter + 1)}>
                 Counter
             </button><br />
-            <button onClick={logout}>
+            <button onClick={() => logout()}>
                 Logout
             </button><br />
             <Link href="/"><a>Home</a></Link><br />
         </div>
     )
 }
+
 
 export default ProtectedRoute(Counter)
