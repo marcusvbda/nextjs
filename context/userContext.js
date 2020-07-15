@@ -6,7 +6,7 @@ import { isJSON } from '../utils/helpers'
 export const UserContext = createContext()
 
 const UserContextProvider = ({ children, cookie_user }) => {
-    const [user, setUser] = useState(cookie_user)
+    const [user, setUser] = useState(cookie_user || {})
 
     const setUserName = username => {
         setUser({ ...user, userName: username })

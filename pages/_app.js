@@ -17,7 +17,10 @@ const App = ({ Component, pageProps, cookie_user }) => {
     )
 }
 
-App.getInitialProps = ({ ctx }) => {
+App.getInitialProps = async ({ Component, ctx }) => {
+    let pageProps = {}
+    if (Component.getInitialProps) pageProps = await Component.getInitialProps(ctx)
+
     const { req } = ctx
     const { username } = parseCookies(req)
 
@@ -25,7 +28,7 @@ App.getInitialProps = ({ ctx }) => {
         userName: isTrue(username) ? username : null,
     }
 
-    return { cookie_user: user }
+    return { pageProps, cookie_user: user }
 }
 
 

@@ -2,14 +2,14 @@ import React, { useContext } from 'react'
 import { UserContext } from '../context/userContext'
 import Link from 'next/link'
 import Router from 'next/router'
-// import Head from 'next/head'
+import Head from 'next/head'
 
 const Home = () => {
     const { user } = useContext(UserContext)
 
     return (
         <div>
-            {/* <Head>
+            <Head>
                 <title>My page title</title>
                 <meta property="og:title" content="My page title" key="title" />
                 <meta name="description" content="A page's description, usually one or two sentences." />
@@ -20,7 +20,7 @@ const Home = () => {
                 <meta property="og:image" content="www.meusite.com.br/imagem.jpg" key="image" />
                 <meta property="og:url" content="image/jpeg" key="url" />
                 <meta property="og:type" content="A page's description, usually one or two sentences." key="type" />
-            </Head> */}
+            </Head>
             <h1>Hello</h1>
             <h2>{user.userName}</h2>
             <Link href="/about"><a>About</a></Link>

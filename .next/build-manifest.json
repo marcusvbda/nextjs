@@ -36,6 +36,10 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
+    "/posts/[id]": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/user": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
