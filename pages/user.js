@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { UserContext } from '../contexts/userContext'
+import { UserContext } from '../context/userContext'
 import Link from 'next/link'
 
 
