@@ -1,27 +1,28 @@
 import React, { useEffect, createContext, useState } from 'react'
 import Router from 'next/router'
+import Cookie from 'js-cookie'
+import { isJSON } from '../utils/helpers'
 
 export const UserContext = createContext()
 
-const UserContextProvider = props => {
-    const [user, setUser] = useState({})
-    const [loaded, setLoaded] = useState(false)
-    const [isLoged, setIsLoged] = useState(false)
+const UserContextProvider = ({ children, cookie_user }) => {
+    const [user, setUser] = useState(cookie_user)
 
-    const setUserName = username => setUser({ ...user, userName: username })
+    const setUserName = username => {
+        setUser({ ...user, userName: username })
+        return Cookie.set("username", username, { expires: 365 }) //one year
+    }
 
     const logout = () => {
-        setUser({})
-        Router.push("/user")
+        setUserName(null)
+        return Router.push("/user")
     }
 
-    const isLogged = () => {
-        return user.userName ? true : false
-    }
+    const isLogged = () => user.userName ? true : false
 
     return (
         <UserContext.Provider value={{ user, setUserName, logout, isLogged }}>
-            {props.children}
+            {children}
         </UserContext.Provider>
     )
 }

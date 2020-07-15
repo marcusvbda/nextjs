@@ -9,7 +9,7 @@ const User = () => {
     return (
         <div>
             <h1>User : {user.userName}</h1><br />
-            <button onClick={() => setUserName("vinicius")}>Test Context</button><br />
+            <button onClick={() => setUserName("Marcus Vinicius Bassalobre de Assis")}>Test Context</button><br />
             <Link href="/"><a>Home</a></Link><br />
         </div >
     )
